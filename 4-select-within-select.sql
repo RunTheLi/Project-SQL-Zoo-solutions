@@ -54,3 +54,13 @@ WHERE name ='Germany');
 SELECT name, CONCAT(ROUND(100*population/(SELECT population FROM world WHERE name = 'Germany')), '%')
 FROM world
 WHERE continent = 'Europe';
+
+-- We can use the word ALL to allow >= or > or < or <=to act over a list.
+-- For example, you can find the largest country in the world, by population with this query:
+
+SELECT name
+  FROM world
+ WHERE population >= ALL(SELECT population
+                           FROM world
+                          WHERE population>0)
+You need the condition population>0 in the sub-query as some countries have null for population.
