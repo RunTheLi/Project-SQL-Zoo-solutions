@@ -63,4 +63,25 @@ SELECT name
  WHERE population >= ALL(SELECT population
                            FROM world
                           WHERE population>0)
-You need the condition population>0 in the sub-query as some countries have null for population.
+                          
+-- You need the condition population>0 in the sub-query as some countries have null for population.
+
+-- 6
+-- Which countries have a GDP greater than every country in Europe?
+-- [Give the name only.] (Some countries may have NULL gdp values)
+
+SELECT name FROM world
+WHERE gdp > (select max(gdp) from world where continent = 'Europe');
+
+-- 7
+-- Find the largest country (by area) in each continent, show the continent, the name and the area:
+-- The above example is known as a correlated or synchronized sub-query.
+-- Using correlated subqueries
+
+SELECT continent, name, area
+FROM world AS c1
+WHERE area = (
+    SELECT MAX(area)
+    FROM world AS c2
+    WHERE c2.continent = c1.continent
+);
