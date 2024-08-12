@@ -38,8 +38,5 @@ In which we look at a survey and deal with some more complex calculations.
 9- Window function
 In which we examine UK general election results.
 
-9+ COVID 19
-In which we measure the impact of COVID-19
-
 9 Self join
 In which we join Edinburgh bus routes to Edinburgh bus routes.
